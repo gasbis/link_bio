@@ -4,7 +4,7 @@ from link_bio_1963.styles import styles as styles
 from link_bio_1963.components.info_text import info_text
 from link_bio_1963.styles.colors import TextColor, Color
 
-def header() -> rx.Component:
+def header(details = True) -> rx.Component:
     return rx.stack(
         rx.hstack(
             rx.avatar(
@@ -32,19 +32,26 @@ def header() -> rx.Component:
         spacing="7",   
 
         ),
-        rx.flex(
-            info_text("+13", "años de experiencia"),
-            rx.spacer(),
-            info_text("+13", "años de experiencia"),
-            rx.spacer(),
-            info_text("+13", "años de experiencia"),
-            width="100%",
+        #COndicional para que esta parte salga solo en la página principal
+        rx.cond(
+            details,
+            rx.flex(
+                info_text("+13", "años de experiencia"),
+                rx.spacer(),
+                info_text("+13", "años de experiencia"),
+                rx.spacer(),
+                info_text("+13", "años de experiencia"),
+                width="100%",
+            ),      
         ),
-        
-        
-        rx.text("Soy ingeniero de software y divulgador. Te enseño programación e inteligencia artificial desde cero. Aquí podrás encontrar todos mis enlaces de interés Soy ingeniero de software y divulgador. Te enseño programación e inteligencia artificial desde cero. Aquí podrás encontrar todos mis enlaces de interés¡Bienvenid@!",
-        color=TextColor.BODY.value),
+        rx.cond(
+            details,    
+            rx.text("Soy ingeniero de software y divulgador. Te enseño programación e inteligencia artificial desde cero. Aquí podrás encontrar todos mis enlaces de interés Soy ingeniero de software y divulgador. Te enseño programación e inteligencia artificial desde cero. Aquí podrás encontrar todos mis enlaces de interés¡Bienvenid@!",
+            ),
+        ),
+        width="100%",
+        color=TextColor.BODY.value,
         spacing="6",
-        direction="column",
+        direction="column",        
         align="start",        
     )

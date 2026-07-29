@@ -1,7 +1,7 @@
 import reflex as rx
 from link_bio_1963.styles import styles as styles
 
-def link_button(title: str, body: str, url: str, image: str) -> rx.Component:
+def link_button(title: str, body: str, url: str, image: str, is_external=True) -> rx.Component:
 
    return  rx.link(
         rx.button(
@@ -20,6 +20,6 @@ def link_button(title: str, body: str, url: str, image: str) -> rx.Component:
            ),
         ),
         href=url,
-        is_external=True,
+        is_external=is_external,
         width="100%",
         )

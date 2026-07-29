@@ -2,10 +2,13 @@ import reflex as rx
 from link_bio_1963.styles.styles import Spacer as Spacer
 from link_bio_1963.styles.colors import Color
 from link_bio_1963.styles.fonts import Font, FontWeight
+from link_bio_1963.routes import Route
+
 
 def navbar() -> rx.Component:
     return rx.hstack(
-        rx.text(
+        rx.link(
+            rx.text(
             "moure",
             rx.text(
                 "dev",
@@ -17,6 +20,8 @@ def navbar() -> rx.Component:
             font_family=Font.LOGO.value,
             FontWeight=FontWeight.MEDIUM.value,
             size="7"                   
+            ),
+            href=Route.INDEX.value,
         ),
         position="sticky",
         bg=Color.CONTENT.value,
